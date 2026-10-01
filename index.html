@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Cisco - Mundo Educativo Mágico</title>
+    <!-- Fuentes de Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- BARRA SUPERIOR Y CONTADOR DE LUNAS -->
+    <header class="header">
+        <div class="logo">
+            <span class="emoji-logo">🚀</span>
+            <div>
+                <h1>Mini Cisco</h1>
+                <p class="subtitulo">Para pequeños exploradores (4 a 10 años)</p>
+            </div>
+        </div>
+        <div class="puntos-container">
+            <img src="images/luna.png" alt="Luna" class="img-luna" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+            <span class="emoji-backup" style="display:none;">🌙</span>
+            <span id="puntos">0</span> Lunas
+        </div>
+    </header>
+
+    <!-- NAVEGACIÓN PRINCIPAL DE MATERIAS -->
+    <nav class="nav-materias">
+        <button class="btn-materia active" onclick="mostrarSeccion('sec-cuentos', this)">📖 4 Cuentos Largos</button>
+        <button class="btn-materia" onclick="mostrarSeccionMateria('matematicas', this)">🔢 Matemáticas (35)</button>
+        <button class="btn-materia" onclick="mostrarSeccionMateria('lengua', this)">🔤 Lengua (35)</button>
+        <button class="btn-materia" onclick="mostrarSeccionMateria('ingles', this)">🇬🇧 Inglés (35)</button>
+        <button class="btn-materia" onclick="mostrarSeccionMateria('ciencias', this)">🔬 Ciencias (35)</button>
+        <button class="btn-materia" onclick="mostrarSeccionMateria('sociales', this)">🌍 Sociales e Historia (35)</button>
+        <button class="btn-materia" onclick="mostrarSeccionMateria('arte', this)">🎨 Arte y Pizarra (35)</button>
+    </nav>
+
+    <!-- FILTRO DE EDADES (4 A 10 AÑOS) -->
+    <div class="filtro-edad-bar">
+        <span>Filtrar dificultad:</span>
+        <button class="btn-edad active" onclick="filtrarEdad('todas', this)">Todas las edades</button>
+        <button class="btn-edad" onclick="filtrarEdad('4-5', this)">🐥 4 a 5 años</button>
+        <button class="btn-edad" onclick="filtrarEdad('6-7', this)">🦁 6 a 7 años</button>
+        <button class="btn-edad" onclick="filtrarEdad('8-10', this)">🦅 8 a 10 años</button>
+    </div>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <main class="container">
+
+        <!-- ==========================================
+             LO PRIMERO QUE VEN: 4 CUENTOS LARGOS
+             ========================================== -->
+        <section id="sec-cuentos" class="seccion active">
+            <div class="banner-bienvenida">
+                <h2>📖 ¡Bienvenido a Mini Cisco! Disfruta de estos 4 Cuentos Mágicos</h2>
+                <p>Haz clic en "Escuchar Cuento" para oír la historia o responde la pregunta final para ganar <b>+3 Lunas</b> 🌙</p>
+            </div>
+
+            <div class="grid-cuentos">
+                <!-- CUENTO 1 -->
+                <article class="card-cuento">
+                    <img src="images/cuento1.png" alt="La Luna" class="img-cuento" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="emoji-cuento" style="display:none;">🌕</div>
+                    <div class="cuento-cuerpo">
+                        <h3>1. La Luna que quería aprender a bailar</h3>
+                        <p id="cuento-1-texto" class="texto-largo">
+                            Había una vez en el cielo nocturno una pequeña Luna plateada que observaba a los niños en la Tierra bailar en sus fiestas. La Luna soñaba con aprender los mismos pasos, pero no sabía cómo moverse sin caerse. Una noche, una estrella fugaz muy sabia llamada Estelita descendió y le dijo: "¡Querida Luna, tú ya bailas todas las noches! La fuerza de gravedad es el vals mágico que te hace girar en un círculo perfecto alrededor de la Tierra". Desde aquel momento, la Luna baila feliz iluminando la noche.
+                        </p>
+                        <div class="cuento-acciones">
+                            <button class="btn-audio" onclick="leerTexto('cuento-1-texto')">🔊 Escuchar Cuento</button>
+                            <button class="btn-premio" onclick="preguntaCuento(1)">❓ Pregunta (+3 Lunas)</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CUENTO 2 -->
+                <article class="card-cuento">
+                    <img src="images/cuento2.png" alt="Dino Sabio" class="img-cuento" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="emoji-cuento" style="display:none;">🦕</div>
+                    <div class="cuento-cuerpo">
+                        <h3>2. Dino, el Tiranosaurio Lectosaurio</h3>
+                        <p id="cuento-2-texto" class="texto-largo">
+                            En un valle jurásico rodeado de volcanes y helechos gigantes vivía Dino, un tiranosaurio diferente a los demás. Mientras sus hermanos competían para ver quién rugía más fuerte, a Dino le encantaba sentarse a la sombra de un árbol a leer grandes enciclopedias. Un día, cuando el río se secó, Dino recordó haber leído en un libro de geografía dónde encontrar un manantial oculto en la montaña. Gracias a su amor por los libros, salvó a todos sus amigos del valle.
+                        </p>
+                        <div class="cuento-acciones">
+                            <button class="btn-audio" onclick="leerTexto('cuento-2-texto')">🔊 Escuchar Cuento</button>
+                            <button class="btn-premio" onclick="preguntaCuento(2)">❓ Pregunta (+3 Lunas)</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CUENTO 3 -->
+                <article class="card-cuento">
+                    <img src="images/cuento3.png" alt="El Cohete" class="img-cuento" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="emoji-cuento" style="display:none;">🚀</div>
+                    <div class="cuento-cuerpo">
+                        <h3>3. El viaje del pequeño Cohete Azul</h3>
+                        <p id="cuento-3-texto" class="texto-largo">
+                            El Cohete Azul era el más pequeñito de la estación espacial. Los cohetes más grandes le decían que debía esperar muchos años antes de volar a Marte. Sin embargo, el Cohete Azul practicaba diariamente sus matemáticas y física estelar para no cometer errores de navegación. Un día, la estación necesitó enviar una medicina muy ligera al planeta rojo de emergencia, y solo el Cohete Azul era lo suficientemente ágil para cruzar el cinturón de asteroides a tiempo.
+                        </p>
+                        <div class="cuento-acciones">
+                            <button class="btn-audio" onclick="leerTexto('cuento-3-texto')">🔊 Escuchar Cuento</button>
+                            <button class="btn-premio" onclick="preguntaCuento(3)">❓ Pregunta (+3 Lunas)</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CUENTO 4 -->
+                <article class="card-cuento">
+                    <img src="images/cuento4.png" alt="Bosque Mágico" class="img-cuento" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="emoji-cuento" style="display:none;">🌳</div>
+                    <div class="cuento-cuerpo">
+                        <h3>4. El Bosque de las Palabras Cantadas</h3>
+                        <p id="cuento-4-texto" class="texto-largo">
+                            Oculto tras las montañas vivía un bosque mágico donde los árboles no tenían hojas, ¡sino letras del alfabeto! Cada vez que el viento soplaba suavemente, las letras formaban sílabas y lindas oraciones. Un pequeño conejito llamado Copito aprendió a leer uniendo las sílabas que caían de las ramas. Copito descubrió que cuando leía palabras bonitas como "amor", "respeto" y "amistad", los árboles florecían con hermosas flores multicolor.
+                        </p>
+                        <div class="cuento-acciones">
+                            <button class="btn-audio" onclick="leerTexto('cuento-4-texto')">🔊 Escuchar Cuento</button>
+                            <button class="btn-premio" onclick="preguntaCuento(4)">❓ Pregunta (+3 Lunas)</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SECCIÓN DE ACTIVIDADES (35 POR MATERIA)
+             ========================================== -->
+        <section id="sec-actividades" class="seccion hidden">
+            <h2 id="titulo-materia-activa">Materia</h2>
+            <p id="contador-actividades-info" class="sub-seccion">Mostrando actividades (35 disponibles por materia)</p>
+
+            <!-- PIZARRA DE DIBUJO DENTRO DE ARTE -->
+            <div id="bloque-pizarra-arte" class="pizarra-container hidden">
+                <h3>✏️ Pizarra Mágica de Dibujo (Arte)</h3>
+                <p>¡Elige tu color preferido, ajusta el pincel y crea tu obra en Mini Cisco!</p>
+                
+                <div class="herramientas-dibujo">
+                    <label>Color Pincel: <input type="color" id="color-pincel" value="#FFB7B2"></label>
+                    
+                    <div class="paleta-rapida">
+                        <span class="color-box" style="background:#FF9AA2" onclick="setColor('#FF9AA2')"></span>
+                        <span class="color-box" style="background:#FFB7B2" onclick="setColor('#FFB7B2')"></span>
+                        <span class="color-box" style="background:#FFDAC1" onclick="setColor('#FFDAC1')"></span>
+                        <span class="color-box" style="background:#E2F0CB" onclick="setColor('#E2F0CB')"></span>
+                        <span class="color-box" style="background:#B5EAD7" onclick="setColor('#B5EAD7')"></span>
+                        <span class="color-box" style="background:#C7CEEA" onclick="setColor('#C7CEEA')"></span>
+                    </div>
+
+                    <label>Grosor: <input type="range" id="grosor-pincel" min="2" max="30" value="8"></label>
+                    <button class="btn-borrar" onclick="limpiarPizarra()">🗑️ Limpiar</button>
+                </div>
+                <canvas id="canvas-pizarra" width="700" height="350"></canvas>
+            </div>
+
+            <!-- GRID CON LAS 35 ACTIVIDADES POR MATERIA -->
+            <div id="grid-actividades" class="grid-actividades"></div>
+        </section>
+
+        <!-- MODAL INTERACTIVO DE PREGUNTAS -->
+        <div id="modal-trivia" class="modal-trivia hidden">
+            <div class="modal-contenido">
+                <button class="btn-cerrar" onclick="cerrarTrivia()">✖</button>
+                <span id="badge-materia" class="badge">MATERIA</span>
+                <h3 id="trivia-pregunta">Pregunta...</h3>
+                
+                <div id="opciones-container" class="opciones-grid"></div>
+
+                <div id="mensaje-resultado" class="mensaje-resultado"></div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- SCRIPT DE INTERACTIVIDAD -->
+    <script>
+        let lunas = 0;
+        let materiaActual = '';
+        let edadFiltro = 'todas';
+
+        const materiasConfig = {
+            matematicas: { nombre: '🔢 Matemáticas', icono: '🔢', color: '#FFB7B2' },
+            lengua: { nombre: '🔤 Lengua y Vocabulario', icono: '🔤', color: '#B5EAD7' },
+            ingles: { nombre: '🇬🇧 Inglés Mágico', icono: '🇬🇧', color: '#B2EBF2' },
+            ciencias: { nombre: '🔬 Ciencias Naturales', icono: '🔬', color: '#C7CEEA' },
+            sociales: { nombre: '🌍 Historia y Sociales', icono: '🌍', color: '#FFDAC1' },
+            arte: { nombre: '🎨 Arte, Música y Dibujo', icono: '🎨', color: '#E2F0CB' }
+        };
+
+        const baseDeDatos35 = {};
+
+        function generar35PreguntasPorMateria() {
+            Object.keys(materiasConfig).forEach(mat => {
+                baseDeDatos35[mat] = [];
+                for(let i = 1; i <= 35; i++) {
+                    let rangoEdad = (i <= 12) ? '4-5' : (i <= 24 ? '6-7' : '8-10');
+                    let preguntaObj = crearPreguntaDinamica(mat, i, rangoEdad);
+                    baseDeDatos35[mat].push(preguntaObj);
+                }
+            });
+        }
+
+        function crearPreguntaDinamica(materia, num, edad) {
+            if(materia === 'matematicas') {
+                if(edad === '4-5') return { num, edad, titulo: `Actividad ${num}: Conteo de Objetos`, pregunta: `¿Cuántos soles ☀️ ves aquí: ☀️ ☀️ ☀️ ${num % 2 === 0 ? '☀' : ''}?`, opciones: [`${3 + (num%2)}`, `${2 + (num%2)}`, `${5 + (num%2)}`, '1'], correcta: 0 };
+                if(edad === '6-7') return { num, edad, titulo: `Actividad ${num}: Sumas y Restas`, pregunta: `¿Cuánto es ${num + 3} + 5?`, opciones: [`${num + 7}`, `${num + 8}`, `${num + 9}`, `${num + 6}`], correcta: 1 };
+                return { num, edad, titulo: `Actividad ${num}: Multiplicación y Lógica`, pregunta: `¿Cuánto es ${ (num % 9) + 2 } x 4?`, opciones: [`${((num % 9) + 2) * 4 - 2}`, `${((num % 9) + 2) * 4}`, `${((num % 9) + 2) * 4 + 4}`, '20'], correcta: 1 };
+            }
+            if(materia === 'lengua') {
+                if(edad === '4-5') return { num, edad, titulo: `Actividad ${num}: Vocal Inicial`, pregunta: `¿Con qué letra empieza la palabra ${['Oso 🐻', 'Elefante 🐘', 'Iglú 🧊', 'Uva 🍇'][num % 4]}?`, opciones: ['Letra O', 'Letra E', 'Letra I', 'Letra U'], correcta: num % 4 };
+                if(edad === '6-7') return { num, edad, titulo: `Actividad ${num}: Palabras y Sílabas`, pregunta: `¿Cuántas sílabas tiene la palabra "MARIPOSA"?`, opciones: ['2 sílabas', '3 sílabas', '4 sílabas (Ma-ri-po-sa)', '5 sílabas'], correcta: 2 };
+                return { num, edad, titulo: `Actividad ${num}: Gramática y Ortografía`, pregunta: `En la oración "El gato rápido salta", ¿qué tipo de palabra es "rápido"?`, opciones: ['Sustantivo', 'Verbo', 'Adjetivo', 'Adverbio'], correcta: 2 };
+            }
+            if(materia === 'ingles') {
+                if(edad === '4-5') return { num, edad, titulo: `Actividad ${num}: Easy English`, pregunta: `¿Cómo se dice "${['Perro 🐶', 'Gato 🐱', 'Manzana 🍎', 'Sol ☀️'][num % 4]}" en inglés?`, opciones: ['Dog', 'Cat', 'Apple', 'Sun'], correcta: num % 4 };
+                if(edad === '6-7') return { num, edad, titulo: `Actividad ${num}: Colors & Animals`, pregunta: `¿De qué color es la palabra "BLUE"?`, opciones: ['Rojo', 'Azul', 'Verde', 'Amarillo'], correcta: 1 };
+                return { num, edad, titulo: `Actividad ${num}: English Sentences`, pregunta: `¿Cuál es la forma correcta de decir "Ella es una estudiante"?`, opciones: ['She are a student', 'She is a student', 'She am a student', 'She be student'], correcta: 1 };
+            }
+            if(materia === 'ciencias') {
+                if(edad === '4-5') return { num, edad, titulo: `Actividad ${num}: Animales del Planeta`, pregunta: `¿Cuál de estos animales vive en el agua y nada? 🐟 🐱 🐕`, opciones: ['Pez 🐟', 'Gato 🐱', 'Perro 🐕', 'Pájaro 🐦'], correcta: 0 };
+                if(edad === '6-7') return { num, edad, titulo: `Actividad ${num}: Las Plantas y la Naturaleza`, pregunta: `¿Qué necesitan las plantas para crecer fuertes?`, opciones: ['Caramelos', 'Agua y luz del Sol', 'Jugos de caja', 'Oscuridad'], correcta: 1 };
+                return { num, edad, titulo: `Actividad ${num}: El Universo y el Cuerpo`, pregunta: `¿Cuál es el planeta más cercano al Sol en el Sistema Solar?`, opciones: ['Tierra', 'Mercurio', 'Júpiter', 'Saturno'], correcta: 1 };
+            }
+            if(materia === 'sociales') {
+                if(edad === '4-5') return { num, edad, titulo: `Actividad ${num}: Mi Comunidad`, pregunta: `¿Quién nos ayuda a apagar los incendios en la ciudad?`, opciones: ['El Dentista', 'El Bombero 👨‍🚒', 'El Leñador', 'El Astronauta'], correcta: 1 };
+                if(edad === '6-7') return { num, edad, titulo: `Actividad ${num}: Medios de Transporte`, pregunta: `¿Cuál de estos medios de transporte viaja por las vías del tren?`, opciones: ['Barco', 'Avión', 'Tren 🚆', 'Bicicleta'], correcta: 2 };
+                return { num, edad, titulo: `Actividad ${num}: Geografía y Continentes`, pregunta: `¿En qué gran océano se encuentra la Fosa de las Marianas?`, opciones: ['Atlántico', 'Pacífico', 'Índico', 'Ártico'], correcta: 1 };
+            }
+            if(materia === 'arte') {
+                if(edad === '4-5') return { num, edad, titulo: `Actividad ${num}: Colores Primarios`, pregunta: `Si combinas Amarillo 🟡 y Azul 🔵, ¿qué color creas?`, opciones: ['Verde 🟢', 'Rosa 🌸', 'Morado 🟣', 'Blanco ⚪'], correcta: 0 };
+                if(edad === '6-7') return { num, edad, titulo: `Actividad ${num}: Instrumentos Musicales`, pregunta: `¿Cuál de estos es un instrumento musical de viento?`, opciones: ['Guitarra', 'Tambor', 'Flauta 🪈', 'Piano'], correcta: 2 };
+                return { num, edad, titulo: `Actividad ${num}: Arte Mágico`, pregunta: `¿Cómo se le llama a la técnica de pintar mezclando colores con agua?`, opciones: ['Escultura', 'Acuarela', 'Mosaico', 'Grabado'], correcta: 1 };
+            }
+        }
+
+        function mostrarSeccion(idSec, elem) {
+            document.querySelectorAll('.seccion').forEach(s => s.classList.add('hidden'));
+            document.querySelectorAll('.btn-materia').forEach(b => b.classList.remove('active'));
+            document.getElementById(idSec).classList.remove('hidden');
+            if(elem) elem.classList.add('active');
+        }
+
+        function mostrarSeccionMateria(materia, elem) {
+            materiaActual = materia;
+            mostrarSeccion('sec-actividades', elem);
+
+            const config = materiasConfig[materia];
+            document.getElementById('titulo-materia-activa').innerText = config.nombre;
+
+            const pizarra = document.getElementById('bloque-pizarra-arte');
+            if(materia === 'arte') {
+                pizarra.classList.remove('hidden');
+                inicializarPizarra();
+            } else {
+                pizarra.classList.add('hidden');
+            }
+
+            renderizarTarjetas35();
+        }
+
+        function renderizarTarjetas35() {
+            const grid = document.getElementById('grid-actividades');
+            grid.innerHTML = '';
+
+            const lista = baseDeDatos35[materiaActual] || [];
+            const filtradas = lista.filter(item => edadFiltro === 'todas' || item.edad === edadFiltro);
+
+            document.getElementById('contador-actividades-info').innerText = `Mostrando ${filtradas.length} de 35 actividades disponibles en Mini Cisco`;
+
+            filtradas.forEach(act => {
+                const card = document.createElement('div');
+                card.className = 'card-actividad';
+                card.onclick = () => abrirModalPregunta(act);
+                card.innerHTML = `
+                    <div class="icono-actividad">${materiasConfig[materiaActual].icono}</div>
+                    <span class="badge">${act.edad} años - # ${act.num}</span>
+                    <h3>${act.titulo}</h3>
+                    <p>Haz clic para responder y ganar +1 Luna 🌙</p>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filtrarEdad(edad, elem) {
+            document.querySelectorAll('.btn-edad').forEach(b => b.classList.remove('active'));
+            elem.classList.add('active');
+            edadFiltro = edad;
+            if(materiaActual) renderizarTarjetas35();
+        }
+
+        function abrirModalPregunta(act) {
+            const modal = document.getElementById('modal-trivia');
+            document.getElementById('badge-materia').innerText = `Mini Cisco: ${materiaActual.toUpperCase()} (#${act.num})`;
+            document.getElementById('trivia-pregunta').innerText = act.pregunta;
+            document.getElementById('mensaje-resultado').innerText = '';
+
+            const contOpciones = document.getElementById('opciones-container');
+            contOpciones.innerHTML = '';
+
+            act.opciones.forEach((op, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'btn-opcion';
+                btn.innerText = op;
+                btn.onclick = () => verificarRespuesta(index, act.correcta, btn);
+                contOpciones.appendChild(btn);
+            });
+
+            modal.classList.remove('hidden');
+        }
+
+        function verificarRespuesta(idx, correcta, btn) {
+            document.querySelectorAll('.btn-opcion').forEach(b => b.disabled = true);
+            const msg = document.getElementById('mensaje-resultado');
+
+            if(idx === correcta) {
+                btn.classList.add('correcta');
+                msg.innerText = "¡Excelente! 🎉 ¡Ganaste +1 Luna en Mini Cisco! 🌙";
+                msg.style.color = "#2E7D32";
+                lunas++;
+                document.getElementById('puntos').innerText = lunas;
+            } else {
+                btn.classList.add('incorrecta');
+                document.querySelectorAll('.btn-opcion')[correcta].classList.add('correcta');
+                msg.innerText = "¡Casi! Revisa la opción verde 💫";
+                msg.style.color = "#C62828";
+            }
+        }
+
+        function cerrarTrivia() {
+            document.getElementById('modal-trivia').classList.add('hidden');
+        }
+
+        function preguntaCuento(num) {
+            const preguntas = {
+                1: { pregunta: '¿Qué fuerza hacía bailar a la Luna alrededor de la Tierra?', opciones: ['El Viento', 'La Gravedad', 'La Lluvia', 'El Sol'], correcta: 1 },
+                2: { pregunta: '¿Qué le gustaba hacer a Dino bajo la sombra del helecho?', opciones: ['Pelear', 'Dormir', 'Leer Libros', 'Correr'], correcta: 2 },
+                3: { pregunta: '¿A qué planeta envió la medicina el Cohete Azul?', opciones: ['Marte', 'Venus', 'Luna', 'Saturno'], correcta: 0 },
+                4: { pregunta: '¿Qué leía el conejito Copito para hacer florecer los árboles?', opciones: ['Palabras Bonitas', 'Números', 'Ecuaciones', 'Gritos'], correcta: 0 }
+            };
+            abrirModalPregunta({ ...preguntas[num], materia: 'cuento', num: num });
+        }
+
+        function leerTexto(id) {
+            const txt = document.getElementById(id).innerText;
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const loc = new SpeechSynthesisUtterance(txt);
+                loc.lang = 'es-ES';
+                loc.rate = 0.9;
+                window.speechSynthesis.speak(loc);
+            }
+        }
+
+        let dibujando = false;
+        let canvas, ctx;
+
+        function inicializarPizarra() {
+            canvas = document.getElementById('canvas-pizarra');
+            ctx = canvas.getContext('2d');
+
+            canvas.onmousedown = () => dibujando = true;
+            canvas.onmouseup = () => { dibujando = false; ctx.beginPath(); };
+            canvas.onmousemove = dibujar;
+        }
+
+        function setColor(hex) {
+            document.getElementById('color-pincel').value = hex;
+        }
+
+        function dibujar(e) {
+            if(!dibujando) return;
+            const rect = canvas.getBoundingClientRect();
+            ctx.lineWidth = document.getElementById('grosor-pincel').value;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = document.getElementById('color-pincel').value;
+
+            ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+        }
+
+        function limpiarPizarra() {
+            if(ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        window.onload = () => {
+            generar35PreguntasPorMateria();
+        };
+    </script>
+</body>
+</html>
